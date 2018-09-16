@@ -5,10 +5,11 @@ import axios from 'axios'
 import {URL} from '../../../config';
 import styles from './newsList.css';
 import Button from '../Buttons/buttons';
-
+import CardInfo from '../../widgets/CardInfo/cardInfo';
 
 class NewsList extends Component {
     state = {
+        teams:[],
         items: [],
         start:this.props.start,
         end: this.props.start + this.props.amount,
@@ -21,6 +22,15 @@ componentWillMount() {
 }
 
 request = (start, end) => {
+    if(this.state.teams.length<1) {
+        axios.get(`${URL}/teams`)
+        .then(response=> {
+            this.setState({
+                teams: response.data
+            })
+        })
+    }
+
     axios.get(`${URL}/articles?_start=${start}&_end=${end}`).then(response => {
         this.setState({
             items:[...this.state.items,...response.data]
@@ -40,15 +50,9 @@ renderNews = (type) => {
 
     switch(type){
 
-        case("card"):
+        case "card": 
             template = this.state.items.map((item,i)=> {
-                //   <CSSTransition
-                //     classNames={{
-                //         enter:styles.newsList_wrapper,
-                //         enterActive:styles.newsList_wrapper_enter
-                //     }}
-                //     timeout ={600} 
-                //     key={i}>
+
             return (
                 <CSSTransition
                     classNames={{
@@ -60,6 +64,9 @@ renderNews = (type) => {
                     <div>
                         <div key={i} className={styles.newslist_item}>
                         <Link to={`/articles/${item.id}`}>
+
+                        <CardInfo teams= {this.state.teams} teamId={item.team} date = {item.date}/>
+
                         <h2>{item.title}</h2>
                         </Link>
                         </div>
@@ -77,7 +84,7 @@ renderNews = (type) => {
 
 
     render() {
-        console.log(this.state.items)
+        
         return (
             <div>
                 <TransitionGroup
