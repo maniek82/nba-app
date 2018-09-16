@@ -19,7 +19,7 @@ const CardInfo = (props) => {
     return(
         <div className={styles.cardInfo}>
             <span className={styles.teamName}>
-            {teamName(props.teams, props.teamId)}
+            {teamName(props.teams, props.team)}
             </span>
             <span className={styles.date}>
                 <FontAwesome name="clock-o"/>
