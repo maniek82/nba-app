@@ -16,7 +16,7 @@ const Header = (props) => {
             <FontAwesome name="bars"
             onClick = {props.onOpenNav}
              style={{
-                 color:'red',
+                 color:'orange',
                  padding: '10px',
                  cursor:'pointer'
                 }}
@@ -28,7 +28,7 @@ const Header = (props) => {
     const logo = () => (
       
             <Link to='/' className={style.logo}>
-              <img alt="nba logo" src="./images/nba_logo.png"/>
+              <img alt="nba logo" src="../images/nba_logo.png"/>
             </Link>
    )
 

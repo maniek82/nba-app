@@ -62,7 +62,8 @@ renderNews = (type) => {
                         enterActive:styles.newsList_wrapper_enter
                         }}
                     timeout ={500} 
-                    key={i}> 
+                    key={i}
+                    > 
                     <div>
                         <div key={i} className={styles.newslist_item}>
                         <Link to={`/articles/${item.id}`}>
@@ -77,6 +78,35 @@ renderNews = (type) => {
             )
             });
             break;
+        case 'cardMain':
+            template= this.state.items.map((item,i)=> {
+              return (
+                   <CSSTransition
+                    classNames={{
+                        enter:styles.newsList_wrapper,
+                        enterActive:styles.newsList_wrapper_enter
+                        }}
+                    timeout ={500} 
+                    key={i}
+                    >
+                    <Link to={`/articles/${item.id}`}>
+                        <div className={styles.flex_wrapper}>
+                            <div className={styles.left} style={{
+                                background: `url('/images/articles/${item.image}')`
+                            }}>
+                             <div></div>
+                            </div>
+                            <div className={styles.right}>
+                            <CardInfo teams= {this.state.teams} team={item.team} date = {item.date}/>
+                            <h2>{item.title}</h2>
+                            </div>
+                        </div>
+                    </Link>
+                </CSSTransition>
+              )
+            });
+            break;
+
         default:
         template = null;
 
