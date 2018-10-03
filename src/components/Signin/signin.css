@@ -1,0 +1,26 @@
+.logContainer {
+    width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+    padding-top: 50px;
+}
+.logContainer h2 {
+    font-weight: 300;
+    text-align: center;
+    font-size: 1.7rem;
+}
+.logContainer input {
+    font-size: 1.1rem;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px 10px;
+    box-sizing: border-box;
+    font-weight: 300;
+}
+.logContainer button {
+    background: #03a9f4;
+    font-size: 1rem;
+    padding: 10px;
+    color:#fff;
+    margin-top: 10px;
+}
