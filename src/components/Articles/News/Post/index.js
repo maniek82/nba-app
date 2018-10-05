@@ -3,7 +3,7 @@ import {firebase,firebaseDB, firebaseLooper, firebaseTeams} from '../../../../fi
 
 import styles from '../../../Articles/articles.css';
 import Header from './header';
-import Body from './body';
+// import Body from './body';
 
 
 class NewsArticles extends Component {

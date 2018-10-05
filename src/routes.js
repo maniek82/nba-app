@@ -1,5 +1,5 @@
 import React  from 'react';
-import {Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 
 //COMPONENTS
 import Home from './components/Home/home';
@@ -11,20 +11,20 @@ import NewsMain from './components/Articles/News/Main/index';
 import VideosMain from './components/Articles/Videos/Main/index';
 import SignIn from './components/Signin/signin.js';
 import Dashboard from './components/dashboard/dashboard';
-
-
+import PrivateRoutes from './components/AuthRoutes/privateRoutes'
+import PublicRoutes from './components/AuthRoutes/publicRoutes'
 const Routes = (props) =>  {
     
         return(
             <Layout user = {props.user}>
                 <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/news" exact component={NewsMain}/>
-                    <Route path="/articles/:id" exact component={NewsArticle}/>
-                    <Route path="/videos/:id" exact component ={VideoArticle}/>
-                    <Route path="/videos" exact component={VideosMain}/>
-                    <Route exact path="/sign-in" component ={SignIn}/>
-                    <Route path="/dashboard" exact component={Dashboard} />
+                    <PublicRoutes {...props} restricted={false} path="/" exact component={Home} />
+                    <PublicRoutes {...props} restricted={false} path="/news" exact component={NewsMain}/>
+                    <PublicRoutes {...props} restricted={false} path="/articles/:id" exact component={NewsArticle}/>
+                    <PublicRoutes {...props} restricted={false} path="/videos/:id" exact component ={VideoArticle}/>
+                    <PublicRoutes {...props} restricted={false} path="/videos" exact component={VideosMain}/>
+                    <PublicRoutes {...props} restricted={true} exact path="/sign-in" component ={SignIn}/>
+                    <PrivateRoutes {...props} path="/dashboard" exact component={Dashboard} />
                 </Switch>
             </Layout> 
         )

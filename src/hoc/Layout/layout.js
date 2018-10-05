@@ -18,14 +18,17 @@ class Layout extends Component {
 
     render() {
         return(
-            <div>
+            <div className="layout-content-container">
                 <Header
                     user = {this.props.user}
                   showNav= {this.state.showNav}
                   onHideNav = {()=> this.toggleSideNav(false)}
                   onOpenNav = {()=> this.toggleSideNav(true)}
                 />
+                <div className="layout-content">
                 {this.props.children}
+                </div>
+                
                 <Footer/>
             </div>
         )

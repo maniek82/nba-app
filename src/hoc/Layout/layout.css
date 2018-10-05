@@ -7,3 +7,14 @@ body {
 a {
     text-decoration: none;
 }
+
+
+.layout-content-container {
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+.layout-content {
+    flex: 1;
+}
